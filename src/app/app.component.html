@@ -1,0 +1,20 @@
+<hello name="{{ name }}"></hello>
+<form [formGroup]="userForm">
+ <label for="">Name:</label>
+ <input formControlName="name" type="text"> <br><br>
+ <button (click)="addNewAdd()">Add Address</button>
+ <div formArrayName="address">
+  <ng-container *ngFor="let row of getAddress().controls;let i = index">
+  <div [formGroupName]="i">
+  <label for="">Address1:</label>
+  <input formControlName="address1" type="text"> <br><br>
+  <label for="">City:</label>
+ <input formControlName="city" type="text"> <br><br>
+ <label for="">Pincode:</label>
+ <input formControlName="pincode" type="text"> <br><br>
+  </div>
+  </ng-container>
+</div>
+<button (click)="submit()">Submit</button>
+</form>
+{{this.userForm.value | json}}
